@@ -1,0 +1,16 @@
+<div class="container-dialog">
+
+    <div class="absolute-component"></div>
+
+    <h2 mat-dialog-title class="dialog-title">Delete Confirmation</h2>
+    
+    <mat-dialog-content class="dialog-content">
+      Are you sure you want to delete <strong>{{ data.employee.firstName }} {{ data.employee.lastName }}</strong>?
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end" class="dialog-actions">
+      <button mat-button (click)="onCancel()" color="primary">Cancel</button>
+      <button mat-button (click)="onConfirm()" class="bg-red text-white">Delete</button>
+    </mat-dialog-actions>
+</div>
+

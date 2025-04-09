@@ -9,12 +9,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { EmployeEditDialogComponent } from '../../../shared/components/employe-edit-dialog/employe-edit-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NotifierModule, NotifierService } from 'angular-notifier';
+import { EmployeDeleteDialogComponent } from '../../../shared/components/employe-delete-dialog/employe-delete-dialog.component';
+
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [
     EmployesListModule,
+    NotifierModule,
     DatePipe,
     DecimalPipe
   ],
@@ -31,7 +35,7 @@ export class ListComponent implements OnInit, AfterViewInit {
   filterUsername: string = '';
   filterGroup: string = '';
 
-  constructor(private snackBar: MatSnackBar, private router: Router, private dialog: MatDialog) { }
+  constructor(private snackBar: MatSnackBar, private router: Router, private dialog: MatDialog, private notify: NotifierService) { }
 
   ngOnInit(): void {
     const dummyData: Employee[] = this.generateDummyEmployees(100);
@@ -43,6 +47,8 @@ export class ListComponent implements OnInit, AfterViewInit {
       const [username, group] = filter.split('$');
       return data.username.toLowerCase().includes(username) && data.group.toLowerCase().includes(group);
     };
+
+
   }
 
   ngAfterViewInit(): void {
@@ -61,10 +67,6 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   editEmployee(employee: Employee) {
-    // this.snackBar.open(`Edit action on ${row.username}`, 'Close', {
-    //   duration: 3000,
-    //   panelClass: ['snack-yellow']
-    // });
 
     const dialogRef = this.dialog.open(EmployeEditDialogComponent, {
       width: '700px',
@@ -79,15 +81,27 @@ export class ListComponent implements OnInit, AfterViewInit {
         if (index > -1) {
           this.dataSource.data[index] = result;
           this.dataSource._updateChangeSubscription(); // Refresh table
+
+          this.notify.notify('warning', 'Update Employee Success');
         }
       }
     });
   }
 
-  deleteEmployee(row: Employee) {
-    this.snackBar.open(`Delete action on ${row.username}`, 'Close', {
-      duration: 3000,
-      panelClass: ['snack-red']
+  deleteEmployee(employee: Employee) {
+
+    const dialogRef = this.dialog.open(EmployeDeleteDialogComponent, {
+      width: '300px',
+      data: employee
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Hapus data dari array 
+        this.dataSource.data = this.dataSource.data.filter(e => e.username !== employee.username);
+
+        this.notify.notify('error', 'Delete Employee Success');
+      }
     });
   }
 

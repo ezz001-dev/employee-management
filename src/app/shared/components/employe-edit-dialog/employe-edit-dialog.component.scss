@@ -1,3 +1,26 @@
 .mat-mdc-dialog-content {
     padding-top: 1rem !important;
 }
+
+.container-dialog {
+    position: relative;
+    overflow: hidden;
+
+    .absolute-component {
+        background-color: #FEBA17;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        content: "";
+    }
+
+    .text-white {
+        color: white;
+    }
+
+    .yellow-color {
+        background-color: #FEBA17;
+    }
+}

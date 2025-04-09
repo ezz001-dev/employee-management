@@ -15,8 +15,37 @@
   
     table {
       width: 100%;
-      margin-top: 16px;
+      margin: 0;
+
+      thead {
+        position: sticky;
+        top: 0;
+      }
     }
+
+    .mat-mdc-header-row {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .mat-icon {
+      font-size: 22px;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+
+
+    // .edit-button {
+    //   color: #fbc02d; // Material Yellow 700
+    
+    //   &:hover {
+    //     background-color: rgba(251, 192, 45, 0.1); // sedikit highlight saat hover
+    //   }
+    // }
+
+    
   }
   
   .snack-yellow {
@@ -34,4 +63,22 @@
     border-radius: 8px;
     overflow: hidden;
   }
-  
+
+  .table-wrapper {
+    max-height: 700px; 
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    background-color: white;
+    padding: 0;
+  }
+
+  .sticky-header .mat-header-row {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+ 
