@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from '../../models/Employe.model';
 import { EmployesListModule } from '../../module/employes/employes-list/employes-list.module';
@@ -10,7 +10,8 @@ import { EmployesListModule } from '../../module/employes/employes-list/employes
     EmployesListModule
   ],
   templateUrl: './employe-edit-dialog.component.html',
-  styleUrl: './employe-edit-dialog.component.scss'
+  styleUrl: './employe-edit-dialog.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class EmployeEditDialogComponent {
   editedEmployee: Employee;

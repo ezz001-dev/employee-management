@@ -68,6 +68,7 @@ export class ListComponent implements OnInit, AfterViewInit {
 
     const dialogRef = this.dialog.open(EmployeEditDialogComponent, {
       width: '700px',
+      height: '400px',
       data: employee
     });
 
