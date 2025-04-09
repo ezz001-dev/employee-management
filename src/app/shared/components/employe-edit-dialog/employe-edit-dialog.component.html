@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit Employee</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>First Name</mat-label>
+    <input matInput [(ngModel)]="editedEmployee.firstName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Last Name</mat-label>
+    <input matInput [(ngModel)]="editedEmployee.lastName" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="editedEmployee.email" type="email" />
+  </mat-form-field>
+
+  <!-- Tambahkan field lain sesuai kebutuhan -->
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

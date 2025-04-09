@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="assets/logo.png" alt="Logo" class="logo" />
+        <h1>Employee Management</h1>
+        <p>Welcome back! Please login to your account</p>
+      </div>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" class="btn-login" type="submit" [disabled]="loginForm.invalid">
+          Login
+        </button>
+  
+        <mat-error *ngIf="loginError" class="error-msg">
+          {{ loginError }}
+        </mat-error>
+      </form>
+    </div>
+  </div>
+  

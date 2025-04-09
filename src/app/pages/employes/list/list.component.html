@@ -1,0 +1,71 @@
+<div class="employee-list-container">
+    <div class="header">
+      <h2>Employee List</h2>
+      <button mat-raised-button color="primary" (click)="addEmployee()">Add Employee</button>
+    </div>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Filter Username</mat-label>
+      <input matInput [(ngModel)]="filterUsername" (keyup)="applyFilter()" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Filter Group</mat-label>
+      <input matInput [(ngModel)]="filterGroup" (keyup)="applyFilter()" />
+    </mat-form-field>
+  
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z10">
+  
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.firstName }} {{ element.lastName }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="birthDate">
+        <th mat-header-cell *matHeaderCellDef>Birth Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.birthDate | date }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="basicSalary">
+        <th mat-header-cell *matHeaderCellDef>Salary</th>
+        <td mat-cell *matCellDef="let element">Rp {{ element.basicSalary | number:'1.0-0' }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef>Group</th>
+        <td mat-cell *matCellDef="let element">{{ element.group }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="accent" (click)="editEmployee(element)">Edit</button>
+          <button mat-button color="warn" (click)="deleteEmployee(element)">Delete</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[ 10, 25, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+  
