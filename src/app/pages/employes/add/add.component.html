@@ -1,1 +1,87 @@
-<p>add works!</p>
+<div class="container-card">
+
+    <mat-card class="form-card">
+        <mat-card-title>Add New Employee</mat-card-title>
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+          <div class="form-grid">
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="username" required />
+              <mat-error *ngIf="employeeForm.get('username')?.hasError('required')">
+                Username is required
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" required />
+              <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required')">
+                First name is required
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" required />
+              <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required')">
+                Last name is required
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error *ngIf="employeeForm.get('email')?.hasError('email')">
+                Invalid email format
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Birth Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthDate" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="employeeForm.get('birthDate')?.hasError('max')">
+                Birth date cannot be in the future
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Basic Salary</mat-label>
+              <input matInput type="number" formControlName="basicSalary" />
+              <mat-error *ngIf="employeeForm.get('basicSalary')?.hasError('required')">
+                Basic Salary is required
+              </mat-error>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Status</mat-label>
+              <input matInput formControlName="status" />
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+              <mat-label>Group</mat-label>
+              <mat-select formControlName="group" [compareWith]="compareGroup">
+                <mat-option>
+                  <ngx-mat-select-search [formControl]="groupFilterCtrl"></ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let g of filteredGroups" [value]="g">{{ g }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill" class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+      
+          </div>
+      
+          <div class="actions">
+            <button mat-flat-button color="primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+            <button mat-stroked-button type="button" color="warn" (click)="onCancel()">Cancel</button>
+          </div>
+        </form>
+      </mat-card>
+</div>
+  

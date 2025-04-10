@@ -56,6 +56,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+
   applyFilter() {
     const username = this.filterUsername.trim().toLowerCase();
     const group = this.filterGroup.trim().toLowerCase();
@@ -63,7 +64,7 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   addEmployee() {
-    this.router.navigate(['/employee/add']);
+    this.router.navigate(['/employes/add']);
   }
 
   editEmployee(employee: Employee) {
