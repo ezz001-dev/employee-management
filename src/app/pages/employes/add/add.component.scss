@@ -57,4 +57,33 @@
       }
 }
 
+@media screen and (max-width : 768px) {
+  .container-card {
+    padding: 2rem;
+    align-items: baseline;
+
+    .form-grid {
+      grid-template-columns: auto;
+    }
+
+    .form-card {
+      margin: unset;
+    }
+  }
+}
+@media screen and (max-width : 580px) {
+  .container-card {
+    padding: 1rem;
+    align-items: baseline;
+
+    .form-grid {
+      grid-template-columns: auto;
+    }
+
+    .form-card {
+      margin: unset;
+    }
+  }
+}
+
   

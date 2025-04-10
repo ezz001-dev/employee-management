@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Pipe, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Pipe, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -24,7 +24,8 @@ import { EmployeeService } from '../../../shared/services/employee.service';
     DecimalPipe
   ],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  styleUrl: './list.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class ListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['username', 'name', 'email', 'birthDate', 'basicSalary', 'status', 'group', 'actions'];

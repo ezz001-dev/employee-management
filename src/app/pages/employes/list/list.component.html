@@ -1,18 +1,22 @@
 <div class="employee-list-container">
     <div class="header">
       <h4>Employee List</h4>
-      <button mat-raised-button color="primary" (click)="addEmployee()">Add Employee</button>
+      <button mat-raised-button color="primary" (click)="addEmployee()" class="add-btn">Add Employee</button>
+    </div>
+
+    <div class="wrapper-filter">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Filter Username</mat-label>
+        <input matInput [(ngModel)]="filterUsername" (keyup)="applyFilter()" />
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Filter Group</mat-label>
+        <input matInput [(ngModel)]="filterGroup" (keyup)="applyFilter()" />
+      </mat-form-field>
     </div>
   
-    <mat-form-field appearance="outline">
-      <mat-label>Filter Username</mat-label>
-      <input matInput [(ngModel)]="filterUsername" (keyup)="applyFilter()" />
-    </mat-form-field>
-  
-    <mat-form-field appearance="outline">
-      <mat-label>Filter Group</mat-label>
-      <input matInput [(ngModel)]="filterGroup" (keyup)="applyFilter()" />
-    </mat-form-field>
 
     <div class="table-wrapper mat-elevation-z8" >
       <table mat-table [dataSource]="dataSource" matSort [class.sticky-header]="dataSource.data.length > 10">

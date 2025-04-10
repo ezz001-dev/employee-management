@@ -72,4 +72,29 @@
     }
 }
 
+@media screen and (max-width : 768px) {
+  .container-card {
+    padding: 2rem;
+    
+
+    .detail-card {
+      // margin: unset;
+
+      .bg-image {
+        height: 170px;
+      }
+    }
+  }
+}
+@media screen and (max-width : 580px) {
+  .container-card {
+    padding: 1rem;
+    
+    .detail-card {
+      margin: unset;
+    }
+  }
+}
+
+
   
