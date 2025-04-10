@@ -4,12 +4,15 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployesListModule } from '../../../shared/module/employes/employes-list/employes-list.module';
 import { NgForOf, NgIf } from '@angular/common';
+import { EmployeeService } from '../../../shared/services/employee.service';
+import { NotifierModule, NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-add',
   standalone: true,
   imports: [
     EmployesListModule,
+    NotifierModule,
     NgIf,
     NgForOf
   ],
@@ -19,6 +22,7 @@ import { NgForOf, NgIf } from '@angular/common';
 export class AddComponent implements OnInit {
 
   employeeForm!: FormGroup;
+  statusOpt: string[] = ['Active', 'Inactive']
   groupOptions: string[] = [
     'Engineering', 'Marketing', 'HR', 'Finance', 'Support',
     'Product', 'Legal', 'IT', 'Sales', 'Admin'
@@ -27,7 +31,12 @@ export class AddComponent implements OnInit {
   filteredGroups = this.groupOptions;
   groupFilterCtrl: any = null;
 
-  constructor(private fb: FormBuilder, private router: Router, private snackbar: MatSnackBar) {
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private readonly employeeService: EmployeeService,
+    private notify: NotifierService) {
     this.groupFilterCtrl = this.fb.control('')
   }
 
@@ -61,14 +70,18 @@ export class AddComponent implements OnInit {
 
   onSubmit() {
     if (this.employeeForm.valid) {
+      this.notify.notify('success', 'Add New Employee Successfuly')
+
       console.log('Employee data:', this.employeeForm.value);
-      this.snackbar.open('Employee saved successfully!', 'Close', { duration: 3000 });
-      this.router.navigate(['/employee']);
+      this.employeeService.addEmployee(this.employeeForm.value)
+      setTimeout(() => {
+        this.router.navigate(['/employes/list']);
+      }, 1000);
     }
   }
 
   onCancel() {
-    this.router.navigate(['/employee']);
+    this.router.navigate(['/employes/list']);
   }
 
   compareGroup(a: string, b: string): boolean {

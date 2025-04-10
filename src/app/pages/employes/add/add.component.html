@@ -57,14 +57,17 @@
       
             <mat-form-field appearance="fill">
               <mat-label>Status</mat-label>
-              <input matInput formControlName="status" />
+              <!-- <input matInput formControlName="status" /> -->
+              <mat-select formControlName="status" >
+                <mat-option *ngFor="let s of statusOpt" [value]="s">{{ s }}</mat-option>
+              </mat-select>
             </mat-form-field>
       
             <mat-form-field appearance="fill">
               <mat-label>Group</mat-label>
-              <mat-select formControlName="group" [compareWith]="compareGroup">
+              <mat-select formControlName="group" [compareWith]="compareGroup" name="group">
                 <mat-option>
-                  <ngx-mat-select-search [formControl]="groupFilterCtrl"></ngx-mat-select-search>
+                  <ngx-mat-select-search [formControl]="groupFilterCtrl" placeholderLabel="Search.."></ngx-mat-select-search>
                 </mat-option>
                 <mat-option *ngFor="let g of filteredGroups" [value]="g">{{ g }}</mat-option>
               </mat-select>
@@ -83,5 +86,8 @@
           </div>
         </form>
       </mat-card>
+
+
+      <notifier-container></notifier-container>
 </div>
   
