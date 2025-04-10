@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe, Location } from '@angular/common';
 
@@ -14,7 +14,8 @@ import { EmployesListModule } from '../../../shared/module/employes/employes-lis
     DatePipe
   ],
   templateUrl: './detail.component.html',
-  styleUrl: './detail.component.scss'
+  styleUrl: './detail.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailComponent implements OnInit {
   employee!: Employee;

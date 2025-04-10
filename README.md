@@ -1,27 +1,54 @@
-# EmployeeManagement
+# Employee Management App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
+Aplikasi manajemen karyawan berbasis Angular yang mendukung fitur:
+- Melihat daftar karyawan
+- Filter berdasarkan username dan grup
+- Melihat detail karyawan
+- Menambah, mengedit, dan menghapus data karyawan
 
-## Development server
+## Cara Menjalankan Aplikasi
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 1. Clone Repository
 
-## Code scaffolding
+```bash
+git clone https://github.com/ezz001-dev/employee-management.git
+cd employee-management
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2.  Install Dependencies
+- Pastikan sudah meng-install Node.js dan npm.
+npm install
 
-## Build
+### 3.  Menjalankan Aplikasi
+ng serve  
+npx ng serve
+npm start
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Environment yang Dibutuhkan
+Package	Versi
+- Node.js	>= 18.x.x
+- NPM	>= 9.x.x
+- Angular CLI	>= 18.x
+- Angular Material  ^18.2.14
+- Angular notifier
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ === Fitur Utama ===
+ Tabel karyawan dengan pagination & sorting
 
-## Running end-to-end tests
+ Filter username dan grup
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ Dialog untuk edit dan hapus
 
-## Further help
+ Detail karyawan lengkap
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ Notifikasi menggunakan angular-notifier
+
+
+ == Alur ==
+ - login menggunakan username 'admin' dan password 'admin123'
+ - setelah berhasil login akan di redirect ke halaman list emplyee 
+ - tombol add employee untuk menambahkan new entry yang kan diredirect ke page add employee
+ - setelah berhasil menambahkan new employee akan di redirect ke list employee dan new data akan tampil paling atas
+ - tombol dengan icon i akan mengarahka ke page detail employee
+ - tombol dengan icon pencil berfungsi untuk mengedit data employee yang akan menampilkan dialog form untuk meng update employee yang di pilih
+ - tombol dengan icon sampah berfungsi untuk menghapus data employee yang akan menampilkan dialog form untuk meng hapus employee yang dipilih
