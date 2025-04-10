@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployesListModule } from '../../../shared/module/employes/employes-list/employes-list.module';
 import { NgForOf, NgIf } from '@angular/common';
 import { EmployeeService } from '../../../shared/services/employee.service';
@@ -17,7 +16,8 @@ import { NotifierModule, NotifierService } from 'angular-notifier';
     NgForOf
   ],
   templateUrl: './add.component.html',
-  styleUrl: './add.component.scss'
+  styleUrl: './add.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class AddComponent implements OnInit {
 
@@ -60,6 +60,7 @@ export class AddComponent implements OnInit {
     });
   }
 
+  // validate date if greather than future
   dateNotInFutureValidator(control: any) {
     const today = new Date();
     if (new Date(control.value) > today) {

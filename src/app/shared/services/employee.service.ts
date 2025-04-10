@@ -11,6 +11,12 @@ export class EmployeeService {
 
   employee$ = this.employeeSubject.asObservable();
 
+
+  public savedFilter = {
+    username: '',
+    group: ''
+  };
+
   constructor() {
 
     const groups = ['HR', 'IT', 'Finance', 'Sales', 'Marketing', 'QA', 'R&D', 'Admin', 'Support', 'Legal'];
@@ -41,4 +47,9 @@ export class EmployeeService {
     this.employees.unshift(employee);
     this.employeeSubject.next(this.employees);
   }
+
+  getEmployeeByUsername(username: string): Employee | undefined {
+    return this.employees.find(emp => emp.username === username);
+  }
+
 }

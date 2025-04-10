@@ -5,33 +5,56 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .form-card {
+        padding: 16px;
+        max-width: 800px;
+        width: 720px;
+        margin: auto;
+      }
+      
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+        padding: 16px;
+      }
+      
+      .full-width {
+        grid-column: span 2;
+      }
+      
+      .actions {
+        // margin-top: 24px;
+        display: flex;
+        justify-content: end;
+        gap: 12px;
+        padding: 16px;
+      }
+    
+      .mat-mdc-card-title {
+        margin-bottom: 1rem;
+        padding: 16px;
+        padding-bottom: 20px;
+        background: chocolate;
+        color: white;
+      }
+    
+      .mat-mdc-card {
+        background: none;
+        border-radius: 0;
+        border-color: none;
+        padding: 0;
+      }
+    
+      .mdc-text-field {
+        background: none !important;
+        border-radius: 0;
+      }
+
+      .mat-mdc-text-field-wrapper {
+        background: none;
+      }
 }
 
-.form-card {
-    padding: 16px;
-    max-width: 800px;
-    width: 720px;
-    margin: auto;
-  }
-  
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 16px;
-  }
-  
-  .full-width {
-    grid-column: span 2;
-  }
-  
-  .actions {
-    margin-top: 24px;
-    display: flex;
-    justify-content: end;
-    gap: 12px;
-  }
-
-  .mat-mdc-card-title {
-    margin-bottom: 1rem;
-  }
   

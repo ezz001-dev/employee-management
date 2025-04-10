@@ -40,6 +40,10 @@ export class ListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // const dummyData: Employee[] = this.generateDummyEmployees(100);
+    const saved = this.employeeService.savedFilter;
+    this.filterUsername = saved.username;
+    this.filterGroup = saved.group;
+
     this.employeeService.employee$.subscribe(res => {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
@@ -50,6 +54,8 @@ export class ListComponent implements OnInit, AfterViewInit {
       const [username, group] = filter.split('$');
       return data.username.toLowerCase().includes(username) && data.group.toLowerCase().includes(group);
     };
+
+    this.applyFilter();
 
 
   }
@@ -63,6 +69,12 @@ export class ListComponent implements OnInit, AfterViewInit {
   applyFilter() {
     const username = this.filterUsername.trim().toLowerCase();
     const group = this.filterGroup.trim().toLowerCase();
+
+    this.employeeService.savedFilter = {
+      username: this.filterUsername,
+      group: this.filterGroup
+    };
+
     this.dataSource.filter = `${username}$${group}`;
   }
 
@@ -109,25 +121,11 @@ export class ListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // generateDummyEmployees(count: number): Employee[] {
-  //   const groups = ['HR', 'IT', 'Finance', 'Sales', 'Marketing', 'QA', 'R&D', 'Admin', 'Support', 'Legal'];
-  //   const status = ['Active', 'Inactive'];
-  //   const data: Employee[] = [];
+  toDetails(username: string) {
+    this.router.navigate(['/employes', username])
+  }
 
-  //   for (let i = 1; i <= count; i++) {
-  //     data.push({
-  //       username: `user${i}`,
-  //       firstName: `First${i}`,
-  //       lastName: `Last${i}`,
-  //       email: `user${i}@company.com`,
-  //       birthDate: new Date(1985 + (i % 30), i % 12, i % 28 + 1),
-  //       basicSalary: 3000000 + (i * 50000),
-  //       status: status[i % 2],
-  //       group: groups[i % groups.length],
-  //       description: `Employee number ${i}`
-  //     });
-  //   }
-
-  //   return data;
-  // }
+  onLog(param: any) {
+    console.log(param)
+  }
 }

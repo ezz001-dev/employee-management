@@ -1,5 +1,5 @@
 .employee-list-container {
-    padding: 20px;
+    padding: 5rem;
   
     .header {
       display: flex;
@@ -71,6 +71,27 @@
     background-color: white;
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-icon {
+    color: #2DAA9E;
+  }
+
+  .mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    // border-color: currentColor;
+    background-color: #F5C45E;
+    color: #030303;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
   }
 
  
